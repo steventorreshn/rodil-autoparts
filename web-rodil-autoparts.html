@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rodil AutoParts | Repuestos para Camiones de Trabajo en Honduras</title>
+<meta name="description" content="Repuestos OEM para Kia K2700, Kia Bongo, Hyundai Porter y Hyundai H100. Envío a nivel nacional en Honduras. Cotiza por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#0a0a0c;
+    --ink:#000000;
+    --gray-900:#1a1a1e;
+    --gray-600:#57575f;
+    --gray-300:#dcdce0;
+    --gray-100:#f4f4f6;
+    --line:#e3e3e7;
+    --white:#ffffff;
+    --muted:#63636b;
+    --wa-green:#25d366;
+    --maxw:1200px;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--white);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.02em;line-height:1.1;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  ul{list-style:none;}
+  .container{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+  section{position:relative;padding:120px 0;}
+  .eyebrow{
+    display:inline-block;
+    color:var(--ink);
+    font-family:'Oswald',sans-serif;
+    font-weight:600;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    font-size:.8rem;
+    margin-bottom:14px;
+  }
+  .section-title{font-size:clamp(2rem,4.5vw,3.2rem);font-weight:700;margin-bottom:18px;}
+  .section-lead{color:var(--muted);max-width:620px;font-size:1.05rem;}
+
+  ::-webkit-scrollbar{width:10px;}
+  ::-webkit-scrollbar-track{background:var(--gray-100);}
+  ::-webkit-scrollbar-thumb{background:var(--gray-600);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--ink);}
+
+  /* ---------- Reveal ---------- */
+  .reveal{opacity:0;transform:translateY(36px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);}
+  .reveal.is-visible{opacity:1;transform:translateY(0);}
+  .reveal-scale{opacity:0;transform:scale(.92);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);}
+  .reveal-scale.is-visible{opacity:1;transform:scale(1);}
+  @media(prefers-reduced-motion:reduce){
+    .reveal,.reveal-scale{opacity:1!important;transform:none!important;transition:none!important;}
+  }
+
+  /* ---------- Nav ---------- */
+  .navbar{
+    position:fixed;top:0;left:0;width:100%;z-index:1000;
+    padding:26px 0;
+    transition:padding .35s ease,background .35s ease,border-color .35s ease;
+    border-bottom:1px solid transparent;
+  }
+  .navbar.scrolled{
+    padding:16px 0;
+    background:rgba(255,255,255,.92);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  .navbar .container{display:flex;align-items:center;justify-content:space-between;}
+  .logo{font-family:'Oswald',sans-serif;font-weight:700;font-size:1.3rem;letter-spacing:.03em;text-transform:uppercase;color:var(--ink);}
+  .logo span{font-weight:400;opacity:.55;}
+  .nav-links{display:flex;gap:36px;}
+  .nav-links a{
+    font-size:.85rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--gray-600);position:relative;padding:4px 0;transition:color .25s ease;
+  }
+  .nav-links a::after{
+    content:'';position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--ink);
+    transition:width .3s ease;
+  }
+  .nav-links a:hover{color:var(--ink);}
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{
+    background:var(--ink);color:#fff;padding:10px 22px;border-radius:4px;
+    font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+    transition:background .25s ease,color .25s ease,transform .25s ease;
+  }
+  .nav-cta:hover{transform:translateY(-2px);background:var(--gray-900);}
+  .nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:6px;}
+  .nav-toggle span{width:24px;height:2px;background:var(--ink);display:block;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    display:flex;align-items:center;position:relative;
+    padding:180px 0 110px;
+    background:url('assets/hero-bg.jpg') center top/cover no-repeat, var(--white);
+    overflow:hidden;
+  }
+  .hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center;}
+  .hero-content{max-width:600px;}
+  .hero-content .eyebrow{display:flex;align-items:center;gap:10px;color:var(--ink);}
+  .hero-content .eyebrow::before{content:'';width:34px;height:2px;background:var(--ink);display:inline-block;}
+  .hero h1{
+    font-size:clamp(2.4rem,4.6vw,3.8rem);font-weight:700;color:var(--ink);margin-bottom:26px;
+  }
+  .hero h1 em{font-style:normal;background:var(--ink);color:#fff;padding:0 12px;display:inline-block;box-decoration-break:clone;-webkit-box-decoration-break:clone;}
+  .hero p{font-size:1.1rem;color:var(--muted);max-width:520px;margin-bottom:40px;}
+  .hero-actions{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:56px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;padding:16px 30px;border-radius:4px;
+    font-family:'Oswald',sans-serif;font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-size:.92rem;
+    transition:transform .25s ease,box-shadow .25s ease,background .25s ease,color .25s ease;
+    border:1px solid transparent;
+  }
+  .btn-primary{background:var(--ink);color:#fff;box-shadow:0 14px 30px -12px rgba(0,0,0,.4);}
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 18px 36px -10px rgba(0,0,0,.45);background:var(--gray-900);}
+  .btn-outline{border-color:var(--gray-300);color:var(--ink);}
+  .btn-outline:hover{border-color:var(--ink);background:var(--gray-100);transform:translateY(-3px);}
+  .hero-models{display:flex;gap:14px;flex-wrap:wrap;}
+  .hero-models span{
+    background:var(--ink);border:1px solid var(--ink);color:#fff;font-size:.78rem;font-weight:600;letter-spacing:.06em;
+    text-transform:uppercase;padding:7px 14px;border-radius:100px;box-shadow:0 6px 16px -8px rgba(0,0,0,.4);
+  }
+  .hero-visual{position:relative;}
+  .hero-frame{
+    position:relative;z-index:1;aspect-ratio:4/5;border-radius:18px;overflow:hidden;
+    box-shadow:0 40px 70px -24px rgba(0,0,0,.3), 0 12px 26px -12px rgba(0,0,0,.18);
+    background-image:url('assets/hero.jpg');
+    background-size:cover;background-position:center 30%;background-repeat:no-repeat;
+    will-change:transform;
+  }
+  .hero-badge{
+    position:absolute;left:-28px;bottom:-28px;z-index:2;
+    display:flex;align-items:center;gap:12px;background:#fff;border-radius:12px;padding:16px 20px;
+    box-shadow:0 20px 40px -16px rgba(0,0,0,.3);border:1px solid var(--line);max-width:230px;
+  }
+  .hero-badge .ic{width:36px;height:36px;border-radius:8px;background:var(--ink);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .hero-badge .ic svg{width:18px;height:18px;stroke:#fff;}
+  .hero-badge strong{display:block;font-size:.85rem;line-height:1.3;}
+  .hero-badge span{font-size:.72rem;color:var(--muted);}
+  .scroll-cue{
+    position:absolute;bottom:36px;left:50%;transform:translateX(-50%);
+    display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--gray-600);font-size:.7rem;
+    letter-spacing:.18em;text-transform:uppercase;z-index:2;
+  }
+  .scroll-cue .line{width:1px;height:38px;background:linear-gradient(180deg,var(--ink),transparent);animation:scrollcue 1.8s ease-in-out infinite;}
+  @keyframes scrollcue{0%{opacity:0;transform:scaleY(0);transform-origin:top;}50%{opacity:1;transform:scaleY(1);transform-origin:top;}100%{opacity:0;transform:scaleY(1);transform-origin:bottom;}}
+
+  /* ---------- Brand strip ---------- */
+  .brands{position:relative;background:var(--gray-100);border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding:0;}
+  .brands-bg{display:block;width:100%;height:auto;}
+  .brands-marquee{
+    position:absolute;left:0;top:37%;height:28%;width:100%;
+    display:flex;align-items:center;overflow:hidden;
+    -webkit-mask-image:linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+    mask-image:linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+  }
+  .marquee-track{display:flex;width:max-content;animation:marquee 26s linear infinite;}
+  .marquee-group{display:flex;align-items:center;flex-shrink:0;}
+  .marquee-track span{
+    font-family:'Oswald',sans-serif;font-weight:600;font-size:clamp(.8rem,1.6vw,1.1rem);
+    letter-spacing:.08em;text-transform:uppercase;color:var(--ink);white-space:nowrap;padding:0 1.2em;
+  }
+  .marquee-track .dot{width:5px;height:5px;border-radius:50%;background:var(--ink);opacity:.4;flex-shrink:0;padding:0;}
+  @keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+  @media(prefers-reduced-motion:reduce){.marquee-track{animation:none;}}
+
+  /* ---------- Sobre nosotros ---------- */
+  .about{
+    position:relative;
+    background:
+      linear-gradient(90deg, rgba(0,0,0,.15), rgba(0,0,0,.45)),
+      url('assets/nosotros-fondo.jpg') center/cover no-repeat, var(--ink);
+  }
+  .about-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr .9fr;gap:70px;align-items:center;}
+  .about-visual{
+    position:relative;aspect-ratio:4/5;border-radius:14px;overflow:hidden;
+    border:1px solid rgba(255,255,255,.14);
+    box-shadow:0 34px 70px -20px rgba(0,0,0,.6);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .about-text .eyebrow, .about-text h2{color:#fff;}
+  .about-text p{color:rgba(255,255,255,.74);margin-bottom:20px;font-size:1.02rem;}
+  .badges{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px;}
+  .badge{
+    display:flex;align-items:center;gap:10px;border:1px solid rgba(255,255,255,.22);padding:12px 18px;border-radius:6px;
+    font-size:.85rem;font-weight:600;color:#fff;background:rgba(255,255,255,.08);
+    backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  }
+  .badge .dot{width:8px;height:8px;border-radius:50%;background:#fff;flex-shrink:0;}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px;padding-top:44px;border-top:1px solid rgba(255,255,255,.2);}
+  .stat h3{font-size:clamp(2.2rem,4vw,3rem);color:#fff;margin-bottom:6px;}
+  .stat span{font-size:.78rem;color:rgba(255,255,255,.6);letter-spacing:.06em;text-transform:uppercase;}
+
+  /* ---------- Productos ---------- */
+  .products{background:url('assets/productos-fondo.jpg') center/cover no-repeat, var(--gray-100);}
+  .products-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:60px;}
+  .products-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;}
+  .product-card{
+    background:var(--white);border:1px solid var(--line);border-radius:8px;overflow:hidden;
+    transition:transform .4s cubic-bezier(.16,1,.3,1),border-color .4s ease,box-shadow .4s ease;
+  }
+  .product-card:hover{transform:translateY(-10px);border-color:var(--ink);box-shadow:0 24px 44px -18px rgba(0,0,0,.18);}
+  .product-thumb{
+    aspect-ratio:4/3;position:relative;overflow:hidden;
+    background:linear-gradient(160deg,var(--gray-100),#fff);
+    border-bottom:1px solid var(--line);
+  }
+  .product-thumb img{
+    position:absolute;top:0;left:0;width:100%;height:auto;
+    transition:transform .4s ease;
+  }
+  .product-card:hover .product-thumb img{transform:scale(1.05);}
+  .product-body{padding:22px;}
+  .product-body h3{font-size:1.15rem;margin-bottom:8px;}
+  .product-body p{color:var(--muted);font-size:.88rem;margin-bottom:18px;min-height:44px;}
+  .product-link{
+    display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--ink);
+  }
+  .product-link:hover{color:var(--muted);}
+  .products-note{
+    margin-top:40px;color:var(--muted);font-size:.85rem;border-left:2px solid var(--ink);padding-left:16px;
+  }
+
+  /* ---------- Galeria ---------- */
+  .gallery{background:url('assets/galeria-fondo.jpg') center/cover no-repeat, var(--white);}
+  .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .gallery-item{
+    aspect-ratio:1/1;border-radius:8px;overflow:hidden;border:1px solid var(--line);
+    transition:box-shadow .3s ease,transform .3s ease;
+  }
+  .gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
+  .gallery-item:hover{transform:translateY(-6px);box-shadow:0 24px 44px -18px rgba(0,0,0,.22);}
+  .gallery-item:hover img{transform:scale(1.06);}
+
+  /* ---------- Contacto ---------- */
+  .contact{
+    background:url('assets/contacto-fondo.jpg') center/cover no-repeat, var(--ink);
+    border-top:1px solid rgba(255,255,255,.12);
+  }
+  .contact .eyebrow,.contact .section-title{color:#fff;}
+  .contact .section-lead{color:rgba(255,255,255,.7);}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;}
+  .contact-card{
+    position:relative;overflow:hidden;
+    background:linear-gradient(160deg,#fff 55%,var(--gray-100));
+    border:1px solid var(--line);border-radius:16px;padding:40px 36px 26px;
+    box-shadow:0 34px 70px -30px rgba(0,0,0,.28);
+  }
+  .contact-card-accent{
+    position:absolute;top:0;right:0;width:220px;height:220px;pointer-events:none;
+    background:
+      repeating-linear-gradient(135deg, rgba(255,255,255,.08) 0 2px, transparent 2px 10px),
+      linear-gradient(135deg, transparent 40%, var(--ink) 40%);
+    clip-path:polygon(100% 0, 100% 100%, 26% 0);
+  }
+  .contact-card-head{
+    position:relative;z-index:1;display:flex;justify-content:space-between;align-items:flex-start;gap:20px;
+    margin-bottom:26px;
+  }
+  .contact-wordmark-main{
+    font-family:'Oswald',sans-serif;font-weight:700;font-size:2.1rem;letter-spacing:.01em;
+    color:var(--ink);display:block;line-height:1;
+  }
+  .contact-wordmark-main em{font-style:normal;color:var(--muted);}
+  .contact-wordmark-sub{
+    font-family:'Oswald',sans-serif;font-weight:500;font-size:.8rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--gray-600);display:block;margin-top:4px;
+  }
+  .contact-card-tagline{font-size:.72rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-top:8px;}
+  .contact-card-slogan{
+    font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:right;
+    line-height:1.7;white-space:nowrap;position:relative;z-index:1;
+  }
+  .contact-info-card{
+    position:relative;z-index:1;background:#fff;border-radius:12px;border:1px solid var(--line);
+    padding:6px 22px 22px;box-shadow:0 20px 40px -22px rgba(0,0,0,.22);
+  }
+  .contact-row{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--line);}
+  .contact-row:last-child{border-bottom:none;}
+  .contact-row .ic{
+    width:38px;height:38px;border-radius:6px;background:var(--gray-100);display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .contact-row .ic svg{width:18px;height:18px;stroke:var(--ink);}
+  .contact-row div p{color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;}
+  .contact-row div strong{font-size:1rem;font-weight:600;}
+  .contact-row div strong.placeholder{color:var(--muted);font-weight:500;font-style:italic;}
+  .contact-card-foot{
+    position:relative;z-index:1;text-align:center;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--muted);margin-top:22px;padding-top:16px;border-top:1px solid var(--line);
+  }
+  .wa-big{
+    display:flex;align-items:center;justify-content:center;gap:12px;width:100%;padding:20px;border-radius:8px;
+    background:var(--wa-green);color:#08160d;font-family:'Oswald',sans-serif;font-weight:700;text-transform:uppercase;
+    letter-spacing:.04em;margin-top:22px;transition:transform .25s ease,box-shadow .25s ease;
+  }
+  .wa-big:hover{transform:translateY(-3px);box-shadow:0 16px 34px -12px rgba(37,211,102,.5);}
+  .contact-form{display:flex;flex-direction:column;gap:16px;}
+  .contact-form input,.contact-form textarea{
+    width:100%;background:var(--white);border:1px solid var(--gray-300);border-radius:6px;padding:15px 16px;
+    color:var(--ink);font-family:'Inter',sans-serif;font-size:.95rem;transition:border-color .25s ease;
+  }
+  .contact-form input:focus,.contact-form textarea:focus{outline:none;border-color:var(--ink);}
+  .contact-form textarea{resize:vertical;min-height:120px;}
+  .contact-form h3{color:#fff;}
+  .contact-form button{
+    margin-top:4px;padding:16px;border:none;border-radius:6px;background:#fff;color:var(--ink);
+    font-family:'Oswald',sans-serif;font-weight:600;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;
+    transition:background .25s ease,transform .25s ease;
+  }
+  .contact-form button:hover{background:var(--gray-300);transform:translateY(-2px);}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--ink);border-top:1px solid #000;padding:44px 0;}
+  .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
+  footer .logo{color:#fff;}
+  footer .logo span{color:#fff;}
+  .footer-links{display:flex;gap:26px;flex-wrap:wrap;}
+  .footer-links a{font-size:.82rem;color:rgba(255,255,255,.6);transition:color .25s ease;}
+  .footer-links a:hover{color:#fff;}
+  .footer-copy{font-size:.78rem;color:rgba(255,255,255,.35);margin-top:18px;text-align:center;}
+
+  /* ---------- Floating WhatsApp ---------- */
+  .wa-float{
+    position:fixed;bottom:26px;right:26px;width:60px;height:60px;border-radius:50%;
+    background:var(--wa-green);display:flex;align-items:center;justify-content:center;z-index:900;
+    box-shadow:0 10px 26px -8px rgba(37,211,102,.6);
+    animation:wapulse 2.6s ease-in-out infinite;
+  }
+  .wa-float svg{width:30px;height:30px;fill:#08160d;}
+  @keyframes wapulse{0%,100%{transform:scale(1);}50%{transform:scale(1.08);}}
+  @media(prefers-reduced-motion:reduce){.wa-float{animation:none;}}
+
+  /* ---------- Responsive ---------- */
+  @media(max-width:980px){
+    .nav-links,.nav-cta{display:none;}
+    .nav-toggle{display:flex;}
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-visual{margin-top:40px;max-width:440px;}
+    .about-grid,.contact-grid{grid-template-columns:1fr;}
+    .products-grid{grid-template-columns:repeat(2,1fr);}
+    .gallery-grid{grid-template-columns:repeat(2,1fr);}
+    .stats{grid-template-columns:repeat(3,1fr);gap:14px;}
+  }
+  @media(max-width:600px){
+    section{padding:80px 0;}
+    .hero{padding:150px 0 90px;}
+    .hero-badge{left:0;bottom:-24px;padding:12px 16px;max-width:190px;}
+    .products-grid{grid-template-columns:1fr;}
+    .gallery-grid{grid-template-columns:1fr;}
+    .contact-card-head{flex-direction:column;}
+    .contact-card-slogan{text-align:left;white-space:normal;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="#inicio" class="logo">RODIL <span>AUTOPARTS</span></a>
+    <ul class="nav-links">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#productos">Productos</a></li>
+      <li><a href="#galeria">Galería</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a href="https://wa.me/message/J7R4CO6VBFXCE1" target="_blank" rel="noopener" class="nav-cta">Cotizar</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <span class="eyebrow">Especialistas en camiones de trabajo</span>
+        <h1>Tu camión mueve <em>tu trabajo.</em><br>Nosotros movemos el repuesto.</h1>
+        <p>Repuestos OEM para Kia K2700, Kia Bongo, Hyundai Porter y Hyundai H100. Envío a nivel nacional en Honduras, con garantía en cada pieza.</p>
+        <div class="hero-actions">
+          <a href="https://wa.me/message/J7R4CO6VBFXCE1" target="_blank" rel="noopener" class="btn btn-primary">Cotiza por WhatsApp</a>
+          <a href="#productos" class="btn btn-outline">Ver repuestos por modelo</a>
+        </div>
+        <div class="hero-models">
+          <span>Kia K2700</span>
+          <span>Kia Bongo</span>
+          <span>Hyundai Porter II</span>
+          <span>Hyundai H100</span>
+        </div>
+      </div>
+      <div class="hero-visual reveal-scale">
+        <div class="hero-frame"></div>
+        <div class="hero-badge">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+          <div><strong>Garantía OEM</strong><span>En cada repuesto</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-cue"><span>Scroll</span><span class="line"></span></div>
+</section>
+
+<!-- BRANDS -->
+<section class="brands">
+  <img src="assets/marcas-fondo.jpg" alt="" class="brands-bg">
+  <div class="brands-marquee">
+    <div class="marquee-track">
+      <div class="marquee-group">
+        <span>Kia K2700</span><span class="dot"></span>
+        <span>Kia Bongo</span><span class="dot"></span>
+        <span>Hyundai Porter II</span><span class="dot"></span>
+        <span>Hyundai H100</span><span class="dot"></span>
+        <span>Repuestos OEM</span><span class="dot"></span>
+        <span>Envío nacional</span><span class="dot"></span>
+        <span>Garantía incluida</span><span class="dot"></span>
+      </div>
+      <div class="marquee-group" aria-hidden="true">
+        <span>Kia K2700</span><span class="dot"></span>
+        <span>Kia Bongo</span><span class="dot"></span>
+        <span>Hyundai Porter II</span><span class="dot"></span>
+        <span>Hyundai H100</span><span class="dot"></span>
+        <span>Repuestos OEM</span><span class="dot"></span>
+        <span>Envío nacional</span><span class="dot"></span>
+        <span>Garantía incluida</span><span class="dot"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE NOSOTROS -->
+<section class="about" id="nosotros">
+  <div class="container about-grid">
+    <div class="about-visual reveal-scale" style="background-image:url('assets/nosotros.jpg');background-size:cover;background-position:center;"></div>
+    <div class="about-text">
+      <span class="eyebrow reveal">Sobre nosotros</span>
+      <h2 class="section-title reveal">Repuestos para el camión que no se puede detener</h2>
+      <p class="reveal">En Rodil AutoParts nos dedicamos exclusivamente a los camiones de trabajo que mantienen a Honduras en movimiento. Si tu unidad es un Kia K2700, Kia Bongo, Hyundai Porter o Hyundai H100, tenemos el repuesto correcto — sin adivinar el modelo, sin perder tiempo.</p>
+      <p class="reveal">Trabajamos con piezas OEM, envío a nivel nacional y garantía en cada repuesto que vendemos.</p>
+      <div class="badges reveal">
+        <div class="badge"><span class="dot"></span>Repuestos OEM</div>
+        <div class="badge"><span class="dot"></span>Envío nacional</div>
+        <div class="badge"><span class="dot"></span>Garantía incluida</div>
+      </div>
+      <div class="stats">
+        <div class="stat reveal"><h3 data-count="4">0</h3><span>Modelos especializados</span></div>
+        <div class="stat reveal"><h3 data-count="4">0</h3><span>Marcas atendidas</span></div>
+        <div class="stat reveal"><h3 data-count="100">0</h3><span>% Piezas OEM</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTOS -->
+<section class="products" id="productos">
+  <div class="container">
+    <div class="products-head">
+      <div>
+        <span class="eyebrow reveal">Nuestra especialidad</span>
+        <h2 class="section-title reveal">Repuestos por modelo</h2>
+        <p class="section-lead reveal">Encuentra el repuesto exacto para tu camión de trabajo. Cotiza por WhatsApp y te confirmamos disponibilidad y precio al momento.</p>
+      </div>
+    </div>
+    <div class="products-grid">
+
+      <div class="product-card reveal">
+        <div class="product-thumb">
+          <img src="assets/producto-k2700.jpg" alt="Kia K2700">
+        </div>
+        <div class="product-body">
+          <h3>Kia K2700</h3>
+          <p>Repuestos de motor, frenos, suspensión y eléctricos disponibles.</p>
+          <a href="https://wa.me/message/J7R4CO6VBFXCE1" target="_blank" rel="noopener" class="product-link">Cotizar →</a>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-thumb">
+          <img src="assets/producto-bongo.jpg" alt="Kia Bongo">
+        </div>
+        <div class="product-body">
+          <h3>Kia Bongo</h3>
+          <p>Piezas OEM para mantenimiento y reparación general.</p>
+          <a href="https://wa.me/message/J7R4CO6VBFXCE1" target="_blank" rel="noopener" class="product-link">Cotizar →</a>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-thumb">
+          <img src="assets/producto-porter.jpg" alt="Hyundai Porter II">
+        </div>
+        <div class="product-body">
+          <h3>Hyundai Porter II</h3>
+          <p>El repuesto que necesitas, con la atención que buscas.</p>
+          <a href="https://wa.me/message/J7R4CO6VBFXCE1" target="_blank" rel="noopener" class="product-link">Cotizar →</a>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-thumb">
+          <img src="assets/producto-h100.jpg" alt="Hyundai H100">
+        </div>
+        <div class="product-body">
+          <h3>Hyundai H100</h3>
+          <p>Disponibilidad constante para tu unidad de trabajo.</p>
+          <a href="https://wa.me/message/J7R4CO6VBFXCE1" target="_blank" rel="noopener" class="product-link">Cotizar →</a>
+        </div>
+      </div>
+
+    </div>
+    <p class="products-note reveal">Nota: los precios varían según la pieza y disponibilidad, por eso cada tarjeta cotiza directo por WhatsApp. Si prefieres, podemos agregar una lista de precios fija — solo dime.</p>
+  </div>
+</section>
+
+<!-- GALERIA -->
+<section class="gallery" id="galeria">
+  <div class="container">
+    <span class="eyebrow reveal">Galería</span>
+    <h2 class="section-title reveal" style="margin-bottom:50px;">Nuestro trabajo</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item reveal"><img src="assets/galeria-1.jpg" alt="Bodega Rodil AutoParts"></div>
+      <div class="gallery-item reveal"><img src="assets/galeria-2.jpg" alt="Atención en mostrador Rodil AutoParts"></div>
+      <div class="gallery-item reveal"><img src="assets/galeria-3.jpg" alt="Bodega de repuestos Rodil AutoParts"></div>
+      <div class="gallery-item reveal"><img src="assets/galeria-4.jpg" alt="Empaque de repuestos Rodil AutoParts"></div>
+      <div class="gallery-item reveal"><img src="assets/galeria-5.jpg" alt="Despacho a camión Rodil AutoParts"></div>
+      <div class="gallery-item reveal"><img src="assets/galeria-6.jpg" alt="Repuestos disponibles Rodil AutoParts"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contact" id="contacto">
+  <div class="container contact-grid">
+    <div class="reveal">
+      <span class="eyebrow">Contacto</span>
+      <h2 class="section-title">Cotiza tu repuesto</h2>
+      <p class="section-lead" style="margin-bottom:34px;">Escríbenos por WhatsApp con el modelo de tu camión y la pieza que buscas. Respondemos rápido.</p>
+
+      <div class="contact-card">
+        <div class="contact-card-accent"></div>
+        <div class="contact-card-head">
+          <div class="contact-wordmark">
+            <span class="contact-wordmark-main">RODIL<em>.</em></span>
+            <span class="contact-wordmark-sub">AutoParts</span>
+            <p class="contact-card-tagline">Tu aliado en el camino</p>
+          </div>
+          <p class="contact-card-slogan">Repuestos<br>que te mueven<br>más lejos</p>
+        </div>
+
+        <div class="contact-info-card">
+          <div class="contact-row">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+            <div><p>WhatsApp</p><strong>+504 9679-8668</strong></div>
+          </div>
+
+          <div class="contact-row">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><path d="M17.5 6.5h.01"/></svg></div>
+            <div><p>Instagram</p><strong><a href="https://www.instagram.com/rodilautopartsoficial/" target="_blank" rel="noopener">@rodilautopartsoficial</a></strong></div>
+          </div>
+
+          <div class="contact-row">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div><p>Cobertura</p><strong>Honduras · Envío a nivel nacional</strong></div>
+          </div>
+
+          <div class="contact-row">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+            <div><p>Horario de atención</p><strong>24/7</strong></div>
+          </div>
+
+          <a href="https://wa.me/message/J7R4CO6VBFXCE1" target="_blank" rel="noopener" class="wa-big">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="#08160d"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4z"/><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm0 18a8 8 0 01-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1112 20z"/></svg>
+            Escribir por WhatsApp
+          </a>
+        </div>
+
+        <p class="contact-card-foot">Repuestos hoy · Más kilómetros mañana</p>
+      </div>
+    </div>
+
+    <form class="contact-form reveal" onsubmit="event.preventDefault(); alert('Este formulario es una plantilla. Conéctalo a tu email o WhatsApp cuando publiques la web.');">
+      <h3 style="font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:1.3rem;margin-bottom:6px;">Escríbenos</h3>
+      <input type="text" placeholder="Nombre" required>
+      <input type="tel" placeholder="Teléfono" required>
+      <input type="text" placeholder="Modelo de tu camión (K2700, Bongo, Porter, H100...)">
+      <textarea placeholder="¿Qué repuesto necesitas?" required></textarea>
+      <button type="submit">Enviar mensaje</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <a href="#inicio" class="logo">RODIL <span>AUTOPARTS</span></a>
+      <ul class="footer-links">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#productos">Productos</a></li>
+        <li><a href="#galeria">Galería</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="https://www.instagram.com/rodilautopartsoficial/" target="_blank" rel="noopener">Instagram</a></li>
+      </ul>
+    </div>
+    <p class="footer-copy">© 2026 Rodil AutoParts. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<a href="https://wa.me/message/J7R4CO6VBFXCE1" target="_blank" rel="noopener" class="wa-float" aria-label="Escribir por WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4z"/><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm0 18a8 8 0 01-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1112 20z"/></svg>
+</a>
+
+<script>
+(function(){
+  // Navbar scroll state
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  // Mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.querySelector('.nav-links');
+  navToggle.addEventListener('click', () => {
+    const open = navLinks.style.display === 'flex';
+    navLinks.style.cssText = open ? '' : 'display:flex;position:fixed;top:64px;left:0;width:100%;flex-direction:column;background:rgba(255,255,255,.98);padding:24px;gap:20px;border-bottom:1px solid #e3e3e7;';
+    navLinks.querySelectorAll('a').forEach(a => a.style.color = open ? '' : '#0a0a0c');
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    if (window.innerWidth <= 980) { navLinks.style.display = ''; a.style.color = ''; }
+  }));
+
+  // Reveal on scroll (with stagger for siblings)
+  const revealEls = document.querySelectorAll('.reveal, .reveal-scale');
+  const groups = new Map();
+  revealEls.forEach(el => {
+    const parent = el.parentElement;
+    if (!groups.has(parent)) groups.set(parent, []);
+    groups.get(parent).push(el);
+  });
+  groups.forEach(list => list.forEach((el, i) => el.style.transitionDelay = (i * 90) + 'ms'));
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+  revealEls.forEach(el => io.observe(el));
+
+  // Counters
+  const counters = document.querySelectorAll('[data-count]');
+  const counterIO = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = parseInt(el.dataset.count, 10);
+      const duration = 1400;
+      const start = performance.now();
+      function tick(now){
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(eased * target);
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+      counterIO.unobserve(el);
+    });
+  }, { threshold: 0.6 });
+  counters.forEach(el => counterIO.observe(el));
+
+  // Parallax hero visual
+  const heroVisual = document.querySelector('.hero-visual');
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!prefersReduced) {
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const y = window.scrollY;
+          if (heroVisual) heroVisual.style.transform = `translateY(${y * 0.08}px)`;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+})();
+</script>
+</body>
+</html>
