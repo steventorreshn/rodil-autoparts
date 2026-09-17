@@ -10,13 +10,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#12161a;
-    --navy:#d81f2c;
-    --navy-deep:#a30f1c;
-    --steel:#4fa8d8;
-    --dark:#0b0b0d;
-    --dark-2:#151517;
-    --footer:#08080a;
+    --ink:#0f1c28;
+    --navy:#123b63;
+    --navy-deep:#0b2140;
+    --footer:#081527;
     --gray-900:#1a2733;
     --gray-600:#5a6b7a;
     --gray-300:#d7dee4;
@@ -75,16 +72,16 @@
   /* ---------- Nav ---------- */
   .navbar{
     position:fixed;top:0;left:0;width:100%;z-index:1000;
-    padding:22px 0;
-    transition:padding .35s ease,box-shadow .35s ease;
-    background:rgba(255,255,255,.96);
+    padding:26px 0;
+    transition:padding .35s ease,background .35s ease,border-color .35s ease;
+    border-bottom:1px solid transparent;
+  }
+  .navbar.scrolled{
+    padding:16px 0;
+    background:rgba(255,255,255,.94);
     backdrop-filter:blur(14px);
     -webkit-backdrop-filter:blur(14px);
     border-bottom:1px solid var(--line);
-  }
-  .navbar.scrolled{
-    padding:14px 0;
-    box-shadow:0 8px 24px -16px rgba(0,0,0,.25);
   }
   .navbar .container{display:flex;align-items:center;justify-content:space-between;}
   .logo{font-family:'Oswald',sans-serif;font-weight:700;font-size:1.3rem;letter-spacing:.03em;text-transform:uppercase;color:var(--ink);}
@@ -111,52 +108,34 @@
 
   /* ---------- Hero ---------- */
   .hero{
-    display:flex;align-items:center;position:relative;overflow:hidden;
-    padding:160px 0 90px;
-    background:
-      radial-gradient(ellipse 70% 55% at 22% 8%, rgba(216,31,44,.2), transparent 60%),
-      radial-gradient(ellipse 55% 45% at 88% 92%, rgba(79,168,216,.16), transparent 60%),
-      linear-gradient(180deg, var(--dark) 0%, #08080a 100%);
+    display:flex;align-items:center;position:relative;
+    padding:170px 0 100px;
+    background:var(--white);
   }
-  .hero-glow{position:absolute;border-radius:50%;filter:blur(70px);pointer-events:none;will-change:transform;}
-  .hero-glow.g1{width:300px;height:300px;background:var(--navy);opacity:.35;top:10%;left:4%;animation:floatY 10s ease-in-out infinite;}
-  .hero-glow.g2{width:240px;height:240px;background:var(--steel);opacity:.28;bottom:8%;right:6%;animation:floatY 12s ease-in-out infinite;animation-delay:2s;}
-  .hero-glow.g3{width:170px;height:170px;background:var(--navy);opacity:.22;bottom:26%;left:42%;animation:floatY 9s ease-in-out infinite;animation-delay:4s;}
-  .hero-dot{position:absolute;border-radius:50%;background:#fff;pointer-events:none;animation:floatY 7s ease-in-out infinite;}
-  @keyframes floatY{0%,100%{transform:translate(0,0);}50%{transform:translate(12px,-22px);}}
-  @media(prefers-reduced-motion:reduce){.hero-glow,.hero-dot{animation:none;}}
-  .hero-content{position:relative;z-index:2;max-width:760px;margin:0 auto;text-align:center;}
-  .hero-logo{width:min(300px,72vw);margin:0 auto 20px;display:block;}
-  .hero-content .eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--steel);}
-  .hero-content .eyebrow::before{content:'';width:34px;height:2px;background:var(--steel);display:inline-block;}
+  .hero-content{max-width:760px;margin:0 auto;text-align:center;}
+  .hero-content .eyebrow{display:inline-flex;align-items:center;gap:10px;}
+  .hero-content .eyebrow::before{content:'';width:34px;height:2px;background:var(--navy);display:inline-block;}
   .hero h1{
-    font-size:clamp(2.4rem,4.8vw,3.8rem);font-weight:700;color:#fff;margin-bottom:26px;
+    font-size:clamp(2.4rem,4.8vw,3.8rem);font-weight:700;color:var(--ink);margin-bottom:26px;
   }
   .hero h1 em{font-style:normal;background:var(--navy);color:#fff;padding:0 12px;display:inline-block;box-decoration-break:clone;-webkit-box-decoration-break:clone;}
-  .hero p{font-size:1.1rem;color:rgba(255,255,255,.7);max-width:560px;margin:0 auto 40px;}
-  .hero-actions{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;margin-bottom:0;}
+  .hero p{font-size:1.1rem;color:var(--muted);max-width:560px;margin:0 auto 40px;}
+  .hero-actions{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;margin-bottom:40px;}
   .btn{
     display:inline-flex;align-items:center;gap:10px;padding:16px 30px;border-radius:4px;
     font-family:'Oswald',sans-serif;font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-size:.92rem;
     transition:transform .25s ease,box-shadow .25s ease,background .25s ease,color .25s ease;
     border:1px solid transparent;
   }
-  .btn-primary{background:var(--navy);color:#fff;box-shadow:0 14px 30px -12px rgba(216,31,44,.45);}
-  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 18px 36px -10px rgba(216,31,44,.5);background:var(--navy-deep);}
-  .btn-outline{border-color:rgba(255,255,255,.3);color:#fff;}
-  .btn-outline:hover{border-color:#fff;background:rgba(255,255,255,.08);transform:translateY(-3px);}
-  .hero-flow{
-    position:relative;z-index:2;margin:56px auto 0;max-width:520px;display:flex;align-items:flex-start;justify-content:center;
-    padding:26px 18px;border:1px solid rgba(255,255,255,.14);border-radius:12px;background:rgba(255,255,255,.03);
+  .btn-primary{background:var(--navy);color:#fff;box-shadow:0 14px 30px -12px rgba(18,59,99,.45);}
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 18px 36px -10px rgba(18,59,99,.5);background:var(--navy-deep);}
+  .btn-outline{border-color:var(--gray-300);color:var(--ink);}
+  .btn-outline:hover{border-color:var(--navy);background:var(--gray-100);transform:translateY(-3px);}
+  .hero-models{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;}
+  .hero-models span{
+    border:1px solid var(--line);color:var(--gray-600);font-size:.78rem;font-weight:600;letter-spacing:.06em;
+    text-transform:uppercase;padding:7px 14px;border-radius:100px;background:var(--gray-50);
   }
-  .flow-step{display:flex;flex-direction:column;align-items:center;gap:8px;flex:1;min-width:0;}
-  .flow-dot{width:15px;height:15px;border-radius:50%;border:2px solid;display:block;}
-  .flow-dot.d1{border-color:var(--steel);}
-  .flow-dot.d2{border-color:rgba(255,255,255,.5);}
-  .flow-dot.d3{border-color:var(--navy);}
-  .flow-step strong{font-family:'Oswald',sans-serif;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#fff;}
-  .flow-step span{font-size:.64rem;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.5);text-align:center;}
-  .flow-line{flex:0 1 50px;height:1px;background:rgba(255,255,255,.2);margin-top:7px;}
 
   /* ---------- Brand strip ---------- */
   .brands{background:var(--gray-50);border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding:26px 0;}
@@ -176,7 +155,7 @@
   @media(prefers-reduced-motion:reduce){.marquee-track{animation:none;}}
 
   /* ---------- Sobre nosotros ---------- */
-  .about{background:var(--dark);}
+  .about{background:var(--navy-deep);}
   .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:70px;align-items:center;}
   .about-grid>*{min-width:0;}
   .about-visual{
@@ -206,7 +185,7 @@
     background:var(--white);border:1px solid var(--line);border-radius:8px;overflow:hidden;
     transition:transform .4s cubic-bezier(.16,1,.3,1),border-color .4s ease,box-shadow .4s ease;
   }
-  .product-card:hover{transform:translateY(-10px);border-color:var(--navy);box-shadow:0 24px 44px -18px rgba(216,31,44,.22);}
+  .product-card:hover{transform:translateY(-10px);border-color:var(--navy);box-shadow:0 24px 44px -18px rgba(18,59,99,.22);}
   .product-thumb{
     aspect-ratio:4/3;position:relative;overflow:hidden;
     background:linear-gradient(160deg,var(--gray-100),#fff);
@@ -235,12 +214,12 @@
     transition:box-shadow .3s ease,transform .3s ease;
   }
   .gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
-  .gallery-item:hover{transform:translateY(-6px);box-shadow:0 24px 44px -18px rgba(216,31,44,.2);}
+  .gallery-item:hover{transform:translateY(-6px);box-shadow:0 24px 44px -18px rgba(18,59,99,.2);}
   .gallery-item:hover img{transform:scale(1.06);}
 
   /* ---------- Contacto ---------- */
   .contact{
-    background:var(--dark);
+    background:var(--navy-deep);
     border-top:1px solid rgba(255,255,255,.1);
   }
   .contact .eyebrow,.contact .section-title{color:#fff;}
@@ -334,15 +313,10 @@
   @media(max-width:600px){
     section{padding:60px 0;}
     .hero{padding:130px 0 60px;}
-    .hero-logo{width:220px;margin-bottom:14px;}
     .hero h1{font-size:1.9rem;}
     .hero p{font-size:1rem;}
     .hero-actions{gap:12px;}
     .btn{padding:14px 22px;font-size:.82rem;}
-    .hero-flow{margin-top:40px;padding:20px 10px;}
-    .flow-step strong{font-size:.62rem;}
-    .flow-step span{font-size:.56rem;}
-    .flow-line{flex-basis:20px;margin-top:6px;}
     .section-title{font-size:1.7rem;}
     .products-grid{grid-template-columns:repeat(2,1fr);gap:12px;}
     .product-body{padding:14px;}
@@ -381,12 +355,8 @@
 
 <!-- HERO -->
 <section class="hero" id="inicio">
-  <div class="hero-glow g1"></div>
-  <div class="hero-glow g2"></div>
-  <div class="hero-glow g3"></div>
   <div class="container">
     <div class="hero-content">
-      <img src="assets/logo.png" alt="Rodil AutoParts" class="hero-logo reveal-scale">
       <span class="eyebrow">Especialistas en camiones de trabajo</span>
       <h1>Tu camión mueve <em>tu trabajo.</em><br>Nosotros movemos el repuesto.</h1>
       <p>Repuestos OEM para Kia K2700, Kia Bongo, Hyundai Porter y Hyundai H100. Envío a nivel nacional en Honduras, con garantía en cada pieza.</p>
@@ -394,12 +364,11 @@
         <a href="https://wa.me/message/J7R4CO6VBFXCE1" target="_blank" rel="noopener" class="btn btn-primary">Cotiza por WhatsApp</a>
         <a href="#productos" class="btn btn-outline">Ver repuestos por modelo</a>
       </div>
-      <div class="hero-flow">
-        <div class="flow-step"><span class="flow-dot d1"></span><strong>Cotiza</strong><span>Por WhatsApp</span></div>
-        <span class="flow-line"></span>
-        <div class="flow-step"><span class="flow-dot d2"></span><strong>Confirmamos</strong><span>Disponibilidad</span></div>
-        <span class="flow-line"></span>
-        <div class="flow-step"><span class="flow-dot d3"></span><strong>Recibes</strong><span>Tu repuesto</span></div>
+      <div class="hero-models">
+        <span>Kia K2700</span>
+        <span>Kia Bongo</span>
+        <span>Hyundai Porter II</span>
+        <span>Hyundai H100</span>
       </div>
     </div>
   </div>
